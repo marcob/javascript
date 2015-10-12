@@ -70,7 +70,7 @@ test('validate react prop order', t => {
   });
 
   t.test('order: when random method after lifecycle methods', t => {
-    t.plan(2);
+    t.plan(3);
     const result = lint(wrapComponent(`
   componentWillMount() {}
   componentDidMount() {}
@@ -82,7 +82,8 @@ test('validate react prop order', t => {
   render() { return <div />; }
 `));
 
-    t.ok(result.errorCount, 'fails');
-    t.equal(result.messages[0].ruleId, 'react/sort-comp', 'fails due to sort');
+    t.notOk(result.warningCount, 'no warnings');
+    t.notOk(result.errorCount, 'no errors');
+    t.deepEquals(result.messages, [], 'no messages in results');
   });
 });
