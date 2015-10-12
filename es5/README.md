@@ -1,8 +1,9 @@
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/airbnb/javascript?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+# HubSpot JavaScript Style Guide() {
 
-# Airbnb JavaScript Style Guide() {
+> Forked from [Airbnb's Style Guide](https://github.com/airbnb/javascript)
 
-*A mostly reasonable approach to JavaScript*
+*HubSpot's version of a mostly reasonable approach to JavaScript*
+
 
 
 ## Table of Contents
@@ -1648,6 +1649,7 @@
   - **GoodData**: [gooddata/gdc-js-style](https://github.com/gooddata/gdc-js-style)
   - **Grooveshark**: [grooveshark/javascript](https://github.com/grooveshark/javascript)
   - **How About We**: [howaboutwe/javascript](https://github.com/howaboutwe/javascript)
+  - **HubSpot**: [HubSpot/javascript](https://github.com/HubSpot/javascript)
   - **InfoJobs**: [InfoJobs/JavaScript-Style-Guide](https://github.com/InfoJobs/JavaScript-Style-Guide)
   - **Intent Media**: [intentmedia/javascript](https://github.com/intentmedia/javascript)
   - **Jam3**: [Jam3/Javascript-Code-Conventions](https://github.com/Jam3/Javascript-Code-Conventions)

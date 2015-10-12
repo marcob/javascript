@@ -1,7 +1,7 @@
 {
-  "name": "eslint-config-airbnb",
+  "name": "eslint-config-hubspot",
   "version": "0.1.0",
-  "description": "Airbnb's ESLint config, following our styleguide",
+  "description": "HubSpot's ESLint config, following our styleguide",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/airbnb/javascript"
+    "url": "https://github.com/HubSpot/javascript"
   },
   "keywords": [
     "eslint",
@@ -17,14 +17,19 @@
     "config",
     "airbnb",
     "javascript",
-    "styleguide"
+    "styleguide",
+    "hubspot"
   ],
   "author": "Jake Teton-Landis (https://twitter.com/@jitl)",
+  "contributors": [
+    "Ben Anderson <banderson@hubspot.com>",
+    "Nicholas Hwang <nhwang@hubspot.com>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/airbnb/javascript/issues"
+    "url": "https://github.com/HubSpot/javascript/issues"
   },
-  "homepage": "https://github.com/airbnb/javascript",
+  "homepage": "https://github.com/HubSpot/javascript",
   "devDependencies": {
     "babel-eslint": "4.1.3",
     "babel-tape-runner": "1.2.0",

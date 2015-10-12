@@ -1,14 +1,14 @@
 {
-  "name": "airbnb-style",
+  "name": "hubspot-style",
   "version": "2.0.0",
-  "description": "A mostly reasonable approach to JavaScript.",
+  "description": "HubSpot's version of a mostly reasonable approach to JavaScript",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish-all": "npm publish && cd ./packages/eslint-config-airbnb && npm publish"
+    "publish-all": "npm publish && cd ./packages/eslint-config-hubspot && npm publish"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/airbnb/javascript.git"
+    "url": "https://github.com/HubSpot/javascript.git"
   },
   "keywords": [
     "style guide",
@@ -17,12 +17,17 @@
     "es6",
     "es2015",
     "react",
-    "jsx"
+    "jsx",
+    "hubspot"
   ],
   "author": "Harrison Shoff <hi@hshoff.com> (https://twitter.com/hshoff)",
+  "contributors": [
+    "Ben Anderson <banderson@hubspot.com>",
+    "Nicholas Hwang <nhwang@hubspot.com>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/airbnb/javascript/issues"
+    "url": "https://github.com/HubSpot/javascript/issues"
   },
-  "homepage": "https://github.com/airbnb/javascript"
+  "homepage": "https://github.com/HubSpot/javascript"
 }

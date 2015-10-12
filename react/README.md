@@ -1,6 +1,9 @@
-# Airbnb React/JSX Style Guide
+# HubSpot React/JSX Style Guide
 
-*A mostly reasonable approach to React and JSX*
+> Forked from [Airbnb's React/JSX Style Guide](https://github.com/airbnb/javascript/blob/master/react/README.md)
+
+*HubSpot's version of a mostly reasonable approach to React and JSX*
+
 
 ## Table of Contents
 

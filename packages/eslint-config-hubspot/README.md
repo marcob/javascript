@@ -1,34 +1,37 @@
-# eslint-config-airbnb
+# eslint-config-hubspot
 
-This package provides Airbnb's .eslintrc as an extensible shared config.
+> Forked from [Airbnb's Style Guide](https://github.com/airbnb/javascript)
+
+This package provides HubSpot's .eslintrc as an extensible shared config.
+
 
 ## Usage
 
 We export three ESLint configurations for your usage.
 
-### eslint-config-airbnb
+### eslint-config-hubspot
 
 Our default export contains all of our ESLint rules, including EcmaScript 6+
 and React. It requires `eslint`, `babel-eslint`, and `eslint-plugin-react`.
 
-1. `npm install --save-dev eslint-config-airbnb babel-eslint eslint-plugin-react eslint`
-2. add `"extends": "airbnb"` to your .eslintrc
+1. `npm install --save-dev eslint-config-hubspot babel-eslint eslint-plugin-react eslint`
+2. add `"extends": "hubspot"` to your .eslintrc
 
-### eslint-config-airbnb/base
+### eslint-config-hubspot/base
 
 Lints ES6+ but does not lint React. Requires `eslint` and `babel-eslint`.
 
-1. `npm install --save-dev eslint-config-airbnb babel-eslint eslint`
-2. add `"extends": "airbnb/base"` to your .eslintrc
+1. `npm install --save-dev eslint-config-hubspot babel-eslint eslint`
+2. add `"extends": "hubspot/base"` to your .eslintrc
 
-### eslint-config-airbnb/legacy
+### eslint-config-hubspot/legacy
 
 Lints ES5 and below. Only requires `eslint`.
 
-1. `npm install --save-dev eslint-config-airbnb eslint`
-2. add `"extends": "airbnb/legacy"` to your .eslintrc
+1. `npm install --save-dev eslint-config-hubspot eslint`
+2. add `"extends": "hubspot/legacy"` to your .eslintrc
 
-See [Airbnb's Javascript styleguide](https://github.com/airbnb/javascript) and
+See [HubSpot's Javascript styleguide](https://github.com/HubSpot/javascript) and
 the [ESlint config docs](http://eslint.org/docs/user-guide/configuring#extending-configuration-files)
 for more information.
 
