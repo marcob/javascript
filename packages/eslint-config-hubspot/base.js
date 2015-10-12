@@ -1,8 +1,8 @@
 module.exports = {
-  'extends': [
+  extends: [
     'eslint-config-hubspot/legacy',
     'eslint-config-hubspot/rules/es6',
   ],
-  'parser': 'babel-eslint',
-  'rules': {}
+  parser: 'babel-eslint',
+  rules: {}
 };

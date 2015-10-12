@@ -1,5 +1,5 @@
 module.exports = {
-  'extends': [
+  extends: [
     'eslint-config-hubspot/base',
     'eslint-config-hubspot/rules/react',
   ],

@@ -10,19 +10,17 @@ module.exports = {
     // Prevent missing displayName in a React component definition
     'react/display-name': 0,
     // Enforce boolean attributes notation in JSX
-    'react/jsx-boolean-value': 2,
+    'react/jsx-boolean-value': 0,
     // Enforce or disallow spaces inside of curly braces in JSX attributes
     'react/jsx-curly-spacing': 0,
     // Prevent duplicate props in JSX
     'react/jsx-no-duplicate-props': 0,
     // Disallow undeclared variables in JSX
     'react/jsx-no-undef': 2,
-    // Enforce quote style for JSX attributes
-    'react/jsx-quotes': 0,
     // Enforce propTypes declarations alphabetical sorting
-    'react/jsx-sort-prop-types': 0,
+    'react/jsx-sort-prop-types': 2,
     // Enforce props alphabetical sorting
-    'react/jsx-sort-props': 0,
+    'react/jsx-sort-props': 2,
     // Prevent React to be incorrectly marked as unused
     'react/jsx-uses-react': 2,
     // Prevent variables used in JSX to be incorrectly marked as unused
@@ -49,12 +47,33 @@ module.exports = {
     'react/sort-comp': [2, {
       'order': [
         'lifecycle',
-        '/^on.+$/',
-        '/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/',
         'everything-else',
         '/^render.+$/',
         'render'
-      ]
+      ],
+      'group': {
+        'lifecycle': [
+          'displayName',
+          'mixins',
+          'propTypes',
+          'contextTypes',
+          'childContextTypes',
+          'statics',
+          'defaultProps',
+          'constructor',
+          'getDefaultProps',
+          'getInitialState',
+          'state',
+          'getChildContext',
+          'componentWillMount',
+          'componentDidMount',
+          'componentWillReceiveProps',
+          'shouldComponentUpdate',
+          'componentWillUpdate',
+          'componentDidUpdate',
+          'componentWillUnmount'
+        ]
+      }
     }],
     // Prevent missing parentheses around multilines JSX
     'react/wrap-multilines': 2

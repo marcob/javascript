@@ -41,6 +41,7 @@ Other Style Guides (from Airbnb)
   1. [ECMAScript 5 Compatibility](#ecmascript-5-compatibility)
   1. [ECMAScript 6 Styles](#ecmascript-6-styles)
   1. [Testing](#testing)
+  1. [HubSpot Variants](#hubspot-variants)
   1. [Performance](#performance)
   1. [Resources](#resources)
   1. [In the Wild](#in-the-wild)
@@ -2022,6 +2023,71 @@ Other Style Guides (from Airbnb)
       return true;
     }
     ```
+
+**[⬆ back to top](#table-of-contents)**
+
+
+## HubSpot Variants
+
+  - [29.1](#29.1) <a name='29.1'></a> Addendum to [Additional trailing comma](#19.2): **Don't care.**
+
+  > Airbnb encourages multiline trailing commas and makes a good point about it below, but either should be okay as long it's consistent.
+
+    ```javascript
+    // okay
+    const hero = {
+      firstName: 'Dana',
+      lastName: 'Scully'
+    };
+
+    const heroes = [
+      'Batman',
+      'Superman'
+    ];
+
+    // okay
+    const hero = {
+      firstName: 'Dana',
+      lastName: 'Scully',
+    };
+
+    const heroes = [
+      'Batman',
+      'Superman',
+    ];
+    ```
+
+
+  - [29.2](#29.2) <a name='29.2'></a> Variable names should be at least 2 characters long, except `e` and `i` which are commonly used
+
+    ```javascript
+    // bad
+    const n = 24;
+
+    // good
+    const theAnswer = 24;
+
+    // okay
+    const e = event;
+    e.preventDefault();
+
+    // okay
+    for (let i = 0; i < 24; ++i) {
+      magic(i);
+    }
+    ```
+
+  - [29.3](#29.3) <a name='29.3'></a> Addendum to [using PascalCase](#22.3). Constructors require a capital letters, but functions can be capitalize too. The main reason for the latter is for libraries like `Immutable` which allow (and encourage?) initializing objects without `new`
+
+
+    ```javascript
+    // okay
+    const mapInstance = new Map();
+
+    // okay
+    const mapInstance = Map();
+    ```
+
 
 **[⬆ back to top](#table-of-contents)**
 

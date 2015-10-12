@@ -1,5 +1,5 @@
 module.exports = {
-  'extends': [
+  extends: [
     'eslint-config-hubspot/rules/best-practices',
     'eslint-config-hubspot/rules/errors',
     'eslint-config-hubspot/rules/legacy',
@@ -8,14 +8,14 @@ module.exports = {
     'eslint-config-hubspot/rules/style',
     'eslint-config-hubspot/rules/variables'
   ],
-  'env': {
-    'browser': true,
-    'node': true,
-    'amd': false,
-    'mocha': false,
-    'jasmine': false
+  env: {
+    browser: true,
+    node: true,
+    amd: false,
+    mocha: false,
+    jasmine: false
   },
-  'ecmaFeatures': {},
-  'globals': {},
-  'rules': {}
+  ecmaFeatures: {},
+  globals: {},
+  rules: {}
 };
