@@ -208,7 +208,7 @@
     ```
 
 
-  - List _propTypes_ alphabetically
+  - List __propTypes__ alphabetically
 
     ```javascript
     // bad
@@ -488,6 +488,7 @@ These are guidelines more than rules, and they will likely be more controversial
   1. Optional render methods like renderNavigation() or renderProfilePicture()
   1. render
 
+
   - How to define propTypes, defaultProps, contextTypes, etc...
 
   ```javascript
@@ -516,6 +517,7 @@ These are guidelines more than rules, and they will likely be more controversial
   Link.propTypes = propTypes;
   Link.defaultProps = defaultProps;
   ```
+
 
   - Ordering for React.createClass:
 
