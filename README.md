@@ -2060,7 +2060,7 @@ Other Style Guides (from Airbnb)
     ```
 
 
-  - [29.2](#29.2) <a name='29.2'></a> Variable names should be at least 2 characters long, except `e` and `i` which are commonly used
+  - [29.2](#29.2) <a name='29.2'></a> Variable names should be at least 2 characters long, except `e`, `i`, 'Q', and '$' which are commonly used for event, loop index, Q promise, and jQuery (respectively)
 
     ```javascript
     // bad
