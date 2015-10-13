@@ -1,10 +1,10 @@
 {
   "name": "hubspot-style",
-  "version": "2.0.0",
+  "version": "1.0.1",
   "description": "HubSpot's version of a mostly reasonable approach to JavaScript",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish-all": "cd ./packages/eslint-config-hubspot && npm publish"
+    "publish-all": "npm publish && cd ./packages/eslint-config-hubspot && npm publish"
   },
   "repository": {
     "type": "git",
