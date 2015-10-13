@@ -37,8 +37,21 @@ test('validate react prop order', t => {
   t.test('passes a good component', t => {
     t.plan(3);
     const result = lint(wrapComponent(`
+  displayName: ''
+  mixins: []
+  propTypes: {}
+  contextTypes: {}
+  childContextTypes: {}
+  getDefaultProps() {}
+  getInitialState() {}
+  getChildContext() {}
   componentWillMount() {}
   componentDidMount() {}
+  componentWillReceiveProps() {}
+  shouldComponentUpdate() {}
+  componentWillUpdate() {}
+  componentDidUpdate() {}
+  componentWillUnmount() {}
   setFoo() {}
   getFoo() {}
   setBar() {}

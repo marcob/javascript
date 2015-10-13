@@ -51,7 +51,7 @@ module.exports = {
         '/^render.+$/',
         'render'
       ],
-      'group': {
+      'groups': {
         'lifecycle': [
           'displayName',
           'mixins',
@@ -60,7 +60,9 @@ module.exports = {
           'childContextTypes',
           'statics',
           'defaultProps',
+          'constructor',
           'getDefaultProps',
+          'state',
           'getInitialState',
           'getChildContext',
           'componentWillMount',
