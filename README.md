@@ -1,5 +1,7 @@
 # HubSpot JavaScript Style Guide() {
 
+[![npm version](https://badge.fury.io/js/hubspot-style.svg)](https://badge.fury.io/js/hubspot-style)
+
 > Forked from [Airbnb's Style Guide](https://github.com/airbnb/javascript)
 
 *HubSpot's version of a mostly reasonable approach to JavaScript*

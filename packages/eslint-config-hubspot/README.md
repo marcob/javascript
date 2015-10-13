@@ -1,5 +1,7 @@
 # eslint-config-hubspot
 
+[![npm version](https://badge.fury.io/js/eslint-config-hubspot.svg)](https://badge.fury.io/js/eslint-config-hubspot)
+
 > Forked from [Airbnb's Style Guide](https://github.com/airbnb/javascript)
 
 This package provides HubSpot's .eslintrc as an extensible shared config.
