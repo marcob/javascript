@@ -7,9 +7,11 @@
 *HubSpot's version of a mostly reasonable approach to JavaScript*
 
 
-Other Style Guides (from Airbnb)
+Other Style Guides (from HubSpot)
  - [ES5](es5/)
  - [React](react/)
+
+Other Style Guides (from Airbnb)
  - [CSS & Sass](https://github.com/airbnb/css)
  - [Ruby](https://github.com/airbnb/ruby)
 
@@ -2060,7 +2062,7 @@ Other Style Guides (from Airbnb)
     ```
 
 
-  - [29.2](#29.2) <a name='29.2'></a> Variable names should be at least 2 characters long, except `e`, `i`, 'Q', and '$' which are commonly used for event, loop index, Q promise, and jQuery (respectively)
+  - [29.2](#29.2) <a name=`29.2`></a> Variable names should be at least 2 characters long, except `e`, `i`, `Q`, and `$` which are commonly used for event, loop index, Q promise, and jQuery (respectively)
 
     ```javascript
     // bad
