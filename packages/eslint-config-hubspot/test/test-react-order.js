@@ -1,7 +1,6 @@
 import test from 'tape';
 import { CLIEngine } from 'eslint';
 import eslintrc from '../';
-import baseConfig from '../base';
 import reactRules from '../rules/react';
 
 const cli = new CLIEngine({
@@ -21,42 +20,41 @@ function lint(text) {
 function wrapComponent(body) {
   return `
 import React from 'react';
-export default class MyComponent extends React.Component {
+export default React.createClass({
 ${body}
-}
+});
 `;
 }
 
 test('validate react prop order', t => {
   t.test('make sure our eslintrc has React linting dependencies', t => {
-    t.plan(2);
-    t.equal(baseConfig.parser, 'babel-eslint', 'uses babel-eslint');
+    t.plan(1);
     t.equal(reactRules.plugins[0], 'react', 'uses eslint-plugin-react');
   });
 
   t.test('passes a good component', t => {
     t.plan(3);
     const result = lint(wrapComponent(`
-  displayName: ''
-  mixins: []
-  propTypes: {}
-  contextTypes: {}
-  childContextTypes: {}
-  getDefaultProps() {}
-  getInitialState() {}
-  getChildContext() {}
-  componentWillMount() {}
-  componentDidMount() {}
-  componentWillReceiveProps() {}
-  shouldComponentUpdate() {}
-  componentWillUpdate() {}
-  componentDidUpdate() {}
-  componentWillUnmount() {}
-  setFoo() {}
-  getFoo() {}
-  setBar() {}
-  someMethod() {}
-  renderDogs() {}
+  displayName: '',
+  mixins: [],
+  propTypes: {},
+  contextTypes: {},
+  childContextTypes: {},
+  getDefaultProps() {},
+  getInitialState() {},
+  getChildContext() {},
+  componentWillMount() {},
+  componentDidMount() {},
+  componentWillReceiveProps() {},
+  shouldComponentUpdate() {},
+  componentWillUpdate() {},
+  componentDidUpdate() {},
+  componentWillUnmount() {},
+  setFoo() {},
+  getFoo() {},
+  setBar() {},
+  someMethod() {},
+  renderDogs() {},
   render() { return <div />; }
 `));
 
@@ -68,13 +66,13 @@ test('validate react prop order', t => {
   t.test('order: when random method is first', t => {
     t.plan(2);
     const result = lint(wrapComponent(`
-  someMethod() {}
-  componentWillMount() {}
-  componentDidMount() {}
-  setFoo() {}
-  getFoo() {}
-  setBar() {}
-  renderDogs() {}
+  someMethod() {},
+  componentWillMount() {},
+  componentDidMount() {},
+  setFoo() {},
+  getFoo() {},
+  setBar() {},
+  renderDogs() {},
   render() { return <div />; }
 `));
 
@@ -85,13 +83,13 @@ test('validate react prop order', t => {
   t.test('order: when random method after lifecycle methods', t => {
     t.plan(3);
     const result = lint(wrapComponent(`
-  componentWillMount() {}
-  componentDidMount() {}
-  someMethod() {}
-  setFoo() {}
-  getFoo() {}
-  setBar() {}
-  renderDogs() {}
+  componentWillMount() {},
+  componentDidMount() {},
+  someMethod() {},
+  setFoo() {},
+  getFoo() {},
+  setBar() {},
+  renderDogs() {},
   render() { return <div />; }
 `));
 

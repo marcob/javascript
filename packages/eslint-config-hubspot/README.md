@@ -14,16 +14,16 @@ We export three ESLint configurations for your usage.
 ### eslint-config-hubspot
 
 Our default export contains all of our ESLint rules, including EcmaScript 6+
-and React. It requires `eslint`, `babel-eslint`, and `eslint-plugin-react`.
+and React. It requires `eslint` and `eslint-plugin-react`.
 
 1. `npm install --save-dev eslint-config-hubspot babel-eslint eslint-plugin-react eslint`
 2. add `"extends": "hubspot"` to your .eslintrc
 
 ### eslint-config-hubspot/base
 
-Lints ES6+ but does not lint React. Requires `eslint` and `babel-eslint`.
+Lints ES6+ but does not lint React. Requires `eslint`.
 
-1. `npm install --save-dev eslint-config-hubspot babel-eslint eslint`
+1. `npm install --save-dev eslint-config-hubspot eslint`
 2. add `"extends": "hubspot/base"` to your .eslintrc
 
 ### eslint-config-hubspot/legacy
@@ -48,6 +48,24 @@ You can run tests with `npm test`.
 You can make sure this module lints with itself using `npm run lint`.
 
 ## Changelog
+
+### 1.0.2
+- enable rest params in linter, derp. (#592)
+- enforce rule 18.5, ensuring files end with a single newline character. (#578)
+
+### 1.0.1
+
+oops
+
+### 1.0.0
+- require `eslint` `v1.0.0` or higher
+- removes `babel-eslint` dependency
+
+### 0.1.1
+- remove id-length rule (#569)
+- enable `no-mixed-spaces-and-tabs` (#539)
+- enable `no-const-assign` (#560)
+- enable `space-before-keywords` (#554)
 
 ### 0.1.0
 
