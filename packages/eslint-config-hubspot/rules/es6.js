@@ -19,7 +19,8 @@ module.exports = {
     'spread': true,
     'superInFunctions': true,
     'templateStrings': true,
-    'jsx': true
+    'jsx': true,
+    'experimentalObjectRestSpread': true
   },
   'rules': {
     // require parens in arrow function arguments
