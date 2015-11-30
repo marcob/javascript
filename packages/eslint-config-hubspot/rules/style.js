@@ -21,7 +21,7 @@ module.exports = {
     // enforces use of function declarations or expressions
     'func-style': 0,
     // this option enforces minimum and maximum identifier lengths (variable names, property names etc.)
-    'id-length': [2, {'min': 2, 'properties': 'never', 'exceptions': ['e', 'i', 'Q', '$']}],
+    'id-length': 0,
     // this option sets a specific tab width for your code
     'indent': [2, 2],
     // specify whether double or single quotes should be used in JSX attributes
@@ -49,9 +49,9 @@ module.exports = {
     // disallow if as the only statement in an else block
     'no-lonely-if': 0,
     // disallow mixed spaces and tabs for indentation
-    'no-mixed-spaces-and-tabs': 0,
-    // disallow multiple empty lines
-    'no-multiple-empty-lines': [2, {'max': 2}],
+    'no-mixed-spaces-and-tabs': 2,
+    // disallow multiple empty lines and only one newline at the end
+    'no-multiple-empty-lines': [2, {'max': 2, 'maxEOF': 1}],
     // disallow nested ternary expressions
     'no-nested-ternary': 2,
     // disallow use of the Object constructor
@@ -88,7 +88,7 @@ module.exports = {
     'semi': [2, 'always'],
     // sort variables within the same declaration block
     'sort-vars': 0,
-    // require a space after certain keywords
+    // require a space before certain keywords
     'space-before-keywords': [2, 'always'],
     // require a space after certain keywords
     'space-after-keywords': [2, 'always'],

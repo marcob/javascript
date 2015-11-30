@@ -194,42 +194,6 @@
     <Hello personal={true} />;
     ```
 
-  - List __props__ in alphabetical order, unless you are spreading props and different ordering is required to maintain behavior.
-
-    ```javascript
-    // bad
-    <Hello lastName="Smith" firstName="John" />;
-
-    // good
-    <Hello firstName="John" lastName="Smith" />;
-
-    // meh (introducing spread changes behavior, so do what you must...)
-    <Hello lastName="Smith" {...this.props} firstName="John" />;
-    ```
-
-
-  - List __propTypes__ alphabetically
-
-    ```javascript
-    // bad
-    var Component = React.createClass({
-      propTypes: {
-        z: React.PropTypes.number,
-        a: React.PropTypes.any,
-        b: React.PropTypes.string
-      }
-    });
-
-    // good
-    var Component = React.createClass({
-      propTypes: {
-        a: React.PropTypes.any,
-        b: React.PropTypes.string,
-        z: React.PropTypes.number
-      }
-    });
-    ```
-
   - Declare every prop in `propTypes`.  If you use a value on `this.props` anywhere in your component, it should be listed in `propTypes`.
 
     ```javascript
