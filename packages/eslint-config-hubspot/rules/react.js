@@ -9,7 +9,7 @@ module.exports = {
     // Prevent missing displayName in a React component definition
     'react/display-name': 0,
     // Enforce boolean attributes notation in JSX
-    'react/jsx-boolean-value': 2,
+    'react/jsx-boolean-value': [2, 'always'],
     // Enforce or disallow spaces inside of curly braces in JSX attributes
     'react/jsx-curly-spacing': 0,
     // Prevent duplicate props in JSX
