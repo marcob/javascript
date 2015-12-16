@@ -1,6 +1,6 @@
 {
   "name": "hubspot-style",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "description": "HubSpot's version of a mostly reasonable approach to JavaScript",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

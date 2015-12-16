@@ -33,6 +33,8 @@
 
   - Use class extends React.Component unless you have a very good reason to use mixins.
 
+  eslint rules: [`react/prefer-es6-class`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-es6-class.md).
+
   ```javascript
   // bad
   const Listing = React.createClass({
@@ -54,7 +56,10 @@
 
   - **Extensions**: Use `.jsx` extension for React components.
   - **Filename**: Use PascalCase for filenames. E.g., `ReservationCard.jsx`.
-  - **Reference Naming**: Use PascalCase for React components and camelCase for their instances:
+  - **Reference Naming**: Use PascalCase for React components and camelCase for their instances.
+
+    eslint rules: [`react/jsx-pascal-case`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md).
+
     ```javascript
     // bad
     const reservationCard = require('./ReservationCard');
@@ -101,6 +106,8 @@
 ## Alignment
   - Follow these alignment styles for JSX syntax
 
+  eslint rules: [`react/jsx-closing-bracket-location`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md).
+
     ```javascript
     // bad
     <Foo superLongParam="bar"
@@ -129,6 +136,8 @@
 
   > Why? JSX attributes [can't contain escaped quotes](http://eslint.org/docs/rules/jsx-quotes), so double quotes make conjunctions like `"don't"` easier to type.
   > Regular HTML attributes also typically use double quotes instead of single, so JSX attributes mirror this convention.
+
+  eslint rules: [`jsx-quotes`](http://eslint.org/docs/rules/jsx-quotes).
 
     ```javascript
     // bad
@@ -297,6 +306,9 @@
 
 ## Tags
   - Always self-close tags that have no children.
+
+  eslint rules: [`react/self-closing-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md).
+
     ```javascript
     // bad
     <Foo className="stuff"></Foo>
@@ -306,6 +318,9 @@
     ```
 
   - If your component has multi-line properties, close its tag on a new line.
+
+  eslint rules: [`react/jsx-closing-bracket-location`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md).
+
     ```javascript
     // bad
     <Foo
