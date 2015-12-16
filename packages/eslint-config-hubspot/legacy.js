@@ -7,7 +7,7 @@ module.exports = {
     'eslint-config-hubspot/rules/strict',
     'eslint-config-hubspot/rules/style',
     'eslint-config-hubspot/rules/variables'
-  ],
+  ].map(require.resolve),
   env: {
     browser: true,
     node: true,
