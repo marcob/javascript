@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+# Go to project git root
+PROJECT_ROOT=$(git rev-parse --show-toplevel)
+cd $PROJECT_ROOT
+
+# Load constants
+source bin/constants
+
+# Helpers
+function checkout() {
+    local EXISTS=$(git branch | grep "$1")
+
+    if [[ ! -z "$2" ]]; then
+        if [[ ! -z "$EXISTS" ]];then
+            git branch -D $1
+        fi
+        git checkout -b "$1" "$2"
+    else
+        if [[ -z "$EXISTS" ]];then
+            git checkout -b "$1"
+        else
+            git checkout "$1"
+        fi
+    fi
+}
+
+function rename() {
+    rm -rf "$1"
+    mv "$2" "$1"
+}
+
+# Add Airbnb git remote
+if [[ -z $(git remote -v | grep "$AIRBNB_REMOTE $AIRBNB_GIT (fetch)") ]]; then
+    git remote add "$AIRBNB_REMOTE" "$AIRBNB_GIT"
+fi
+
+# Stash any existing changes before diffing
+git stash save "$STASH_MESSAGE"
+
+# Checkout working branch
+checkout "$WORKING_BRANCH"
+
+# Fetch Airbnb changes
+git fetch "$AIRBNB_REMOTE" "$REMOTE_BRANCH"
+
+# Checkout Airbnb remote branch
+checkout "$COMPARATE_BRANCH" "$AIRBNB_REMOTE/$REMOTE_BRANCH"
+
+# Rename eslint-config-airbnb to eslint-config-hubspot for diffing
+rename "$ESLINT_HUBSPOT" "$ESLINT_AIRBNB"
+
+# Commit rename for diffing
+git add "$ESLINT_AIRBNB" "$ESLINT_HUBSPOT"
+git commit -m "$COMMIT_MESSAGE"
+
+# Checkout last branch to begin diffing
+git checkout "$WORKING_BRANCH"
+
+# Begin diffing
+git difftool --prompt "$COMPARATE_BRANCH"

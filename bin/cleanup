@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Go to project git root
+PROJECT_ROOT=$(git rev-parse --show-toplevel)
+cd $PROJECT_ROOT
+
+# Load constants
+source bin/constants
+
+# Remove remote
+if [[ ! -z "$AIRBNB_REMOTE" ]]; then
+    git remote remove "$AIRBNB_REMOTE"
+fi
+
+# Remove compare branch
+if [[ ! -z $(git branch | grep "$COMPARATE_BRANCH") ]]; then
+    git branch -D "$COMPARATE_BRANCH"
+fi
+
+# Remove working branch
+if [[ ! -z $(git branch | grep "$WORKING_BRANCH") ]]; then
+    git branch -D "$WORKING_BRANCH"
+fi

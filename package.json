@@ -3,8 +3,10 @@
   "version": "2.0.0",
   "description": "HubSpot's version of a mostly reasonable approach to JavaScript",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "publish-all": "npm publish && cd ./packages/eslint-config-hubspot && npm publish"
+    "update": "./bin/difftool",
+    "cleanup ": "./bin/cleanup",
+    "publish:config": "cd packages/eslint-config-hubspot && npm publish",
+    "publish:all": "npm publish && npm run publish:config"
   },
   "repository": {
     "type": "git",
