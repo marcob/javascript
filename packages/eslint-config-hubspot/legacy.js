@@ -4,7 +4,6 @@ module.exports = {
     'eslint-config-hubspot/rules/errors',
     'eslint-config-hubspot/rules/legacy',
     'eslint-config-hubspot/rules/node',
-    'eslint-config-hubspot/rules/strict',
     'eslint-config-hubspot/rules/style',
     'eslint-config-hubspot/rules/variables'
   ].map(require.resolve),
