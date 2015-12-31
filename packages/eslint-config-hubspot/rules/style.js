@@ -10,7 +10,7 @@ module.exports = {
     'comma-spacing': [2, {'before': false, 'after': true}],
     // enforce one true comma style
     'comma-style': [2, 'last'],
-    // require or disallow padding inside computed properties
+    // disallow padding inside computed properties
     'computed-property-spacing': [2, 'never'],
     // enforces consistent naming when capturing the current execution context
     'consistent-this': 0,
@@ -34,6 +34,18 @@ module.exports = {
     'lines-around-comment': 0,
     // disallow mixed 'LF' and 'CRLF' as linebreaks
     'linebreak-style': 0,
+    // specify the maximum length of a line in your program
+    // https://github.com/eslint/eslint/blob/master/docs/rules/max-len.md
+    'max-len': [0, {
+      'code': 100,
+      'comments': 100,
+      'commentLength': 100,
+      'tabWidth': 2,
+      'ignoreUrls': false,
+      'ignorePattern': null,
+      'ignoreTrailingComments': false,
+      'ignoreComments': false
+    }],
     // specify the maximum depth callbacks can be nested
     'max-nested-callbacks': 0,
     // require a capital letter for constructors
@@ -68,8 +80,8 @@ module.exports = {
     'no-underscore-dangle': 0,
     // disallow the use of Boolean literals in conditional expressions
     'no-unneeded-ternary': 0,
-    // require or disallow padding inside curly braces
-    'object-curly-spacing': 0,
+    // require padding inside curly braces
+    'object-curly-spacing': [0, 'always'],
     // allow just one var statement per function
     'one-var': [2, 'never'],
     // require assignment operator shorthand where possible or prohibit it entirely
@@ -98,7 +110,7 @@ module.exports = {
     'space-before-blocks': 2,
     // require or disallow space before function opening parenthesis
     // https://github.com/eslint/eslint/blob/master/docs/rules/space-before-function-paren.md
-    'space-before-function-paren': [2, 'never'],
+    'space-before-function-paren': [0, { 'anonymous': 'never', 'named': 'never' }],
     // require or disallow spaces inside parentheses
     'space-in-parens': [2, 'never'],
     // require spaces around operators

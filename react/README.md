@@ -8,19 +8,20 @@
 ## Table of Contents
 
   1. [Basic Rules](#basic-rules)
+  1. [Class vs `React.createClass`](#class-vs-reactcreateclass)
   1. [Naming](#naming)
   1. [Declaration](#declaration)
   1. [Alignment](#alignment)
   1. [Quotes](#quotes)
   1. [Spacing](#spacing)
   1. [Props](#props)
-  1. [Set State](#set-state)
   1. [Parentheses](#parentheses)
   1. [Tags](#tags)
   1. [Methods](#methods)
-  1. [Guidelines](#guidelines)
   1. [Ordering](#ordering)
-
+  1. [`isMounted`](#ismounted)
+  1. [Set State](#set-state)
+  1. [Guidelines](#guidelines)
 
 ## Basic Rules
 
@@ -28,29 +29,27 @@
   - Always use JSX syntax.
   - Do not use `React.createElement` unless you're initializing the app from a file that is not JSX.
 
+## Class vs `React.createClass`
 
-## Class vs React.createClass
+  - Use `class extends React.Component` unless you have a very good reason to use mixins.
 
-  - Use class extends React.Component unless you have a very good reason to use mixins.
+    eslint rules: [`react/prefer-es6-class`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-es6-class.md).
 
-  eslint rules: [`react/prefer-es6-class`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-es6-class.md).
+    ```javascript
+    // bad
+    const Listing = React.createClass({
+      render() {
+        return <div />;
+      }
+    });
 
-  ```javascript
-  // bad
-  const Listing = React.createClass({
-    render() {
-      return <div />;
+    // good
+    class Listing extends React.Component {
+      render() {
+        return <div />;
+      }
     }
-  });
-
-  // good
-  class Listing extends React.Component {
-    render() {
-      return <div />;
-    }
-  }
-  ```
-
+    ```
 
 ## Naming
 
@@ -62,10 +61,10 @@
 
     ```javascript
     // bad
-    const reservationCard = require('./ReservationCard');
+    import reservationCard from './ReservationCard';
 
     // good
-    const ReservationCard = require('./ReservationCard');
+    import ReservationCard from './ReservationCard';
 
     // bad
     const ReservationItem = <ReservationCard />;
@@ -74,21 +73,22 @@
     const reservationItem = <ReservationCard />;
     ```
 
-    **Component Naming**: Use the filename as the component name. For example, `ReservationCard.jsx` should have a reference name of `ReservationCard`. However, for root components of a directory, use `index.jsx` as the filename and use the directory name as the component name:
+  - **Component Naming**: Use the filename as the component name. For example, `ReservationCard.jsx` should have a reference name of `ReservationCard`. However, for root components of a directory, use `index.jsx` as the filename and use the directory name as the component name:
+
     ```javascript
     // bad
-    const Footer = require('./Footer/Footer.jsx')
+    import Footer from './Footer/Footer';
 
     // bad
-    const Footer = require('./Footer/index.jsx')
+    import Footer from './Footer/index';
 
     // good
-    const Footer = require('./Footer')
+    import Footer from './Footer';
     ```
 
-
 ## Declaration
-  - Do not use displayName for naming components. Instead, name the component by reference.
+
+  - Do not use `displayName` for naming components. Instead, name the component by reference.
 
     ```javascript
     // bad
@@ -102,11 +102,11 @@
     }
     ```
 
-
 ## Alignment
+
   - Follow these alignment styles for JSX syntax
 
-  eslint rules: [`react/jsx-closing-bracket-location`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md).
+    eslint rules: [`react/jsx-closing-bracket-location`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md).
 
     ```javascript
     // bad
@@ -130,14 +130,14 @@
     </Foo>
     ```
 
-
 ## Quotes
+
   - Always use double quotes (`"`) for JSX attributes, but single quotes for all other JS.
 
-  > Why? JSX attributes [can't contain escaped quotes](http://eslint.org/docs/rules/jsx-quotes), so double quotes make conjunctions like `"don't"` easier to type.
-  > Regular HTML attributes also typically use double quotes instead of single, so JSX attributes mirror this convention.
+    > Why? JSX attributes [can't contain escaped quotes](http://eslint.org/docs/rules/jsx-quotes), so double quotes make conjunctions like `"don't"` easier to type.
+    > Regular HTML attributes also typically use double quotes instead of single, so JSX attributes mirror this convention.
 
-  eslint rules: [`jsx-quotes`](http://eslint.org/docs/rules/jsx-quotes).
+    eslint rules: [`jsx-quotes`](http://eslint.org/docs/rules/jsx-quotes).
 
     ```javascript
     // bad
@@ -156,9 +156,10 @@
     <Foo bar='"bar"' />
     ```
 
-
 ## Spacing
+
   - Always include a single space in your self-closing tag.
+
     ```javascript
     // bad
     <Foo/>
@@ -174,9 +175,10 @@
     <Foo />
     ```
 
-
 ## Props
+
   - Always use camelCase for prop names.
+
     ```javascript
     // bad
     <Foo
@@ -192,6 +194,9 @@
     ```
 
   - Use explicit values for Boolean props
+
+    eslint rules: [`react/jsx-boolean-value`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md).
+
     ```javascript
     // bad (implicit true)
     <Hello personal />;
@@ -232,11 +237,11 @@
     });
     ```
 
-    - Always provide defaults for non-required `propTypes`
+  - Always provide defaults for non-required `propTypes`
 
     ```javascript
     // bad (missing default value for `b` and `z` props)
-    var Component = React.createClass({
+    const Component = React.createClass({
       propTypes: {
         a: React.PropTypes.any.isRequired,
         b: React.PropTypes.string,
@@ -245,7 +250,7 @@
     });
 
     // good
-    var Component = React.createClass({
+    const Component = React.createClass({
       propTypes: {
         a: React.PropTypes.any.isRequired,
         b: React.PropTypes.string,
@@ -261,26 +266,14 @@
     });
     ```
 
-
-## Set State
-  - Don't `setState` in `componentDidMount`
-
-    Updating the state after a component mount will trigger a second render() call and can lead to property/layout thrashing. This **does not apply to `setState` in event handlers** added here.
-
-    If you need to do something to change state here, use a function prop that can change state at the top level and pass new data down accordingly.
-
-
-  - Don't `setState` in `componentDidUpdate`
-
-    Updating the state after a component update will trigger a second render() call and can lead to property/layout thrashing.
-
-    If you need to do something to change state here, use a function prop that can change state at the top level and pass new data down accordingly.
-
-
 ## Parentheses
-  - Wrap JSX tags in parentheses when they span more than one line:
+
+  - Wrap JSX tags in parentheses when they span more than one line.
+
+    eslint rules: [`react/wrap-multilines`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/wrap-multilines.md).
+
     ```javascript
-    /// bad
+    // bad
     render() {
       return <MyComponent className="long body" foo="bar">
                <MyChild />
@@ -303,11 +296,11 @@
     }
     ```
 
-
 ## Tags
+
   - Always self-close tags that have no children.
 
-  eslint rules: [`react/self-closing-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md).
+    eslint rules: [`react/self-closing-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md).
 
     ```javascript
     // bad
@@ -319,7 +312,7 @@
 
   - If your component has multi-line properties, close its tag on a new line.
 
-  eslint rules: [`react/jsx-closing-bracket-location`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md).
+    eslint rules: [`react/jsx-closing-bracket-location`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md).
 
     ```javascript
     // bad
@@ -334,15 +327,52 @@
     />
     ```
 
-
 ## Methods
+
+  - Bind event handlers for the render method in the constructor.
+
+    > Why? A bind call in a the render path create a brand new function on every single render.
+
+    eslint rules: [`react/jsx-no-bind`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md).
+
+    ```javascript
+    // bad
+    class extends React.Component {
+      onClickDiv() {
+        // do stuff
+      }
+
+      render() {
+        return <div onClick={this.onClickDiv.bind(this)} />
+      }
+    }
+
+    // good
+    class extends React.Component {
+      constructor(props) {
+        super(props);
+
+        this.onClickDiv = this.onClickDiv.bind(this);
+      }
+
+      onClickDiv() {
+        // do stuff
+      }
+
+      render() {
+        return <div onClick={this.onClickDiv} />
+      }
+    }
+    ```
+
   - Do not use underscore prefix for internal methods of a React component.
+
     ```javascript
     // bad
     React.createClass({
       _onClickSubmit() {
         // do stuff
-      }
+      },
 
       // other stuff
     });
@@ -354,8 +384,107 @@
       }
 
       // other stuff
-    });
+    }
     ```
+
+## Ordering
+
+  - Ordering for `class extends React.Component`:
+
+  1. `constructor`
+  1. optional `static` methods
+  1. `getChildContext`
+  1. `componentWillMount`
+  1. `componentDidMount`
+  1. `componentWillReceiveProps`
+  1. `shouldComponentUpdate`
+  1. `componentWillUpdate`
+  1. `componentDidUpdate`
+  1. `componentWillUnmount`
+  1. Getters, setters, event handlers, helper methods, etc.
+  1. Optional render methods like `renderNavigation()` or `renderProfilePicture()`
+  1. `render`
+
+
+  - How to define `propTypes`, `defaultProps`, `contextTypes`, etc...
+
+    ```javascript
+    import React, { Component, PropTypes } from 'react';
+
+    const propTypes = {
+        id: PropTypes.number.isRequired,
+        url: PropTypes.string.isRequired,
+        text: PropTypes.string,
+    };
+
+    const defaultProps = {
+        text: 'Hello World',
+    };
+
+    export default class Link extends Component {
+        static methodsAreOk() {
+        return true;
+        }
+
+        render() {
+        return <a href={this.props.url} data-id={this.props.id}>{this.props.text}</a>
+        }
+    }
+
+    Link.propTypes = propTypes;
+    Link.defaultProps = defaultProps;
+    ```
+
+
+  - Ordering for `React.createClass`:
+
+  1. `displayName`
+  1. `mixins`
+  1. `propTypes`
+  1. `contextTypes`
+  1. `childContextTypes`
+  1. `statics`
+  1. `defaultProps`
+  1. `getDefaultProps`
+  1. `getInitialState`
+  1. `state`
+  1. `getChildContext`
+  1. `componentWillMount`
+  1. `componentDidMount`
+  1. `componentWillReceiveProps`
+  1. `shouldComponentUpdate`
+  1. `componentWillUpdate`
+  1. `componentDidUpdate`
+  1. `componentWillUnmount`
+  1. Getters, setters, event handlers, helper methods, etc.
+  1. Optional render methods like `renderNavigation()` or `renderProfilePicture()`
+  1. render
+
+  eslint rules: [`react/sort-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/sort-comp.md).
+
+## `isMounted`
+
+  - Do not use `isMounted`.
+
+  > Why? [`isMounted` is an anti-pattern][anti-pattern], is not available when using ES6 classes, and is on its way to being officially deprecated.
+
+  [anti-pattern]: https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
+
+  eslint rules: [`react/no-is-mounted`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-is-mounted.md).
+
+## Set State
+  - Don't `setState` in `componentDidMount`
+
+    Updating the state after a component mount will trigger a second render() call and can lead to property/layout thrashing. This **does not apply to `setState` in event handlers** added here.
+
+    If you need to do something to change state here, use a function prop that can change state at the top level and pass new data down accordingly.
+
+
+  - Don't `setState` in `componentDidUpdate`
+
+    Updating the state after a component update will trigger a second render() call and can lead to property/layout thrashing.
+
+    If you need to do something to change state here, use a function prop that can change state at the top level and pass new data down accordingly.
 
 
 ## GuideLines
@@ -413,7 +542,7 @@ These are guidelines more than rules, and they will likely be more controversial
 
     Prefer to pass props/state values into your helper methods instead of access via `this` in the method body. This enables you to extract them to helper objects without refactoring, as well as easily write automated tests without needing to setup a complete stateful component.
 
-    ```js
+    ```javascript
     // discouraged (stateful method, harder to test and extract/refactor)
     export default React.createClass({
       ...
@@ -448,78 +577,5 @@ These are guidelines more than rules, and they will likely be more controversial
       }
     });
     ```
-
-## Ordering
-
-  - Ordering for class extends React.Component:
-
-  1. constructor
-  1. optional static methods
-  1. getChildContext
-  1. componentWillMount
-  1. componentDidMount
-  1. componentWillReceiveProps
-  1. shouldComponentUpdate
-  1. componentWillUpdate
-  1. componentDidUpdate
-  1. componentWillUnmount
-  1. Getters, setters, event handlers, helper methods, etc.
-  1. Optional render methods like renderNavigation() or renderProfilePicture()
-  1. render
-
-
-  - How to define propTypes, defaultProps, contextTypes, etc...
-
-  ```javascript
-  import React, { Component, PropTypes } from 'react';
-
-  const propTypes = {
-    id: PropTypes.number.isRequired,
-    url: PropTypes.string.isRequired,
-    text: PropTypes.string,
-  };
-
-  const defaultProps = {
-    text: 'Hello World',
-  };
-
-  export default class Link extends Component {
-    static methodsAreOk() {
-      return true;
-    }
-
-    render() {
-      return <a href={this.props.url} data-id={this.props.id}>{this.props.text}</a>
-    }
-  }
-
-  Link.propTypes = propTypes;
-  Link.defaultProps = defaultProps;
-  ```
-
-
-  - Ordering for React.createClass:
-
-  1. displayName
-  1. mixins
-  1. propTypes
-  1. contextTypes
-  1. childContextTypes
-  1. statics
-  1. defaultProps
-  1. getDefaultProps
-  1. getInitialState
-  1. state
-  1. getChildContext
-  1. componentWillMount
-  1. componentDidMount
-  1. componentWillReceiveProps
-  1. shouldComponentUpdate
-  1. componentWillUpdate
-  1. componentDidUpdate
-  1. componentWillUnmount
-  1. Getters, setters, event handlers, helper methods, etc.
-  1. Optional render methods like renderNavigation() or renderProfilePicture()
-  1. render
 
 **[⬆ back to top](#table-of-contents)**
