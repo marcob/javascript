@@ -4,7 +4,7 @@
   "description": "HubSpot's version of a mostly reasonable approach to JavaScript",
   "scripts": {
     "difftool": "./bin/difftool",
-    "cleanup ": "./bin/cleanup",
+    "cleanup": "./bin/cleanup",
     "publish:config": "cd packages/eslint-config-hubspot && npm publish",
     "publish:all": "npm publish && npm run publish:config"
   },
