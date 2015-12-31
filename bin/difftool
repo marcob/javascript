@@ -31,7 +31,7 @@ function rename() {
 }
 
 # Add Airbnb git remote
-if [[ -z $(git remote -v | grep "$AIRBNB_REMOTE $AIRBNB_GIT (fetch)") ]]; then
+if [[ -z $(git remote -v | grep -e "$AIRBNB_REMOTE\s\+$AIRBNB_GIT\s\+(fetch)") ]]; then
     git remote add "$AIRBNB_REMOTE" "$AIRBNB_GIT"
 fi
 

@@ -3,7 +3,7 @@
   "version": "2.1.0",
   "description": "HubSpot's version of a mostly reasonable approach to JavaScript",
   "scripts": {
-    "update": "./bin/difftool",
+    "difftool": "./bin/difftool",
     "cleanup ": "./bin/cleanup",
     "publish:config": "cd packages/eslint-config-hubspot && npm publish",
     "publish:all": "npm publish && npm run publish:config"
