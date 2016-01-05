@@ -748,18 +748,36 @@ Other Style Guides (from Airbnb)
     ```
 
 
-  - [8.4](#8.4) <a name='8.4'></a> If your function only takes a single argument, feel free to omit the parentheses.
+  - [8.4](#8.4) <a name='8.4'></a> If your function takes a single argument and doesn’t use braces, omit the parentheses. Otherwise, always include parentheses around arguments.
 
     > Why? Less visual clutter.
 
     eslint rules: [`arrow-parens`](http://eslint.org/docs/rules/arrow-parens.html).
 
     ```js
+    // bad
+    [1, 2, 3].map((x) => x * x);
+
     // good
     [1, 2, 3].map(x => x * x);
 
     // good
-    [1, 2, 3].reduce((y, x) => x + y);
+    [1, 2, 3].map(number => (
+      `A long string with the ${number}. It’s so long that we’ve broken it ` +
+      'over multiple lines!'
+    ));
+
+    // bad
+    [1, 2, 3].map(x => {
+      const y = x + 1;
+      return x * y;
+    });
+
+    // good
+    [1, 2, 3].map((x) => {
+      const y = x + 1;
+      return x * y;
+    });
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -1779,7 +1797,7 @@ Other Style Guides (from Airbnb)
 
   - [19.2](#19.2) <a name='19.2'></a> Additional trailing comma: **Yup.**
 
-    eslint rules: [`no-comma-dangle`](http://eslint.org/docs/rules/no-comma-dangle.html).
+    eslint rules: [`comma-dangle`](http://eslint.org/docs/rules/comma-dangle.html).
 
     > Why? This leads to cleaner git diffs. Also, transpilers like Babel will remove the additional trailing comma in the transpiled code which means you don't have to worry about the [trailing comma problem](es5/README.md#commas) in legacy browsers.
 

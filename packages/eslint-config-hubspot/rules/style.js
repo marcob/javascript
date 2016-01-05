@@ -85,7 +85,8 @@ module.exports = {
     // enforce padding within blocks
     'padded-blocks': [2, 'never'],
     // require quotes around object literal property names
-    'quote-props': 0,
+    // http://eslint.org/docs/rules/quote-props.html
+    'quote-props': [0, 'as-needed', { 'keywords': true, 'unnecessary': true, 'numbers': false }],
     // specify whether double or single quotes should be used
     'quotes': [2, 'single', 'avoid-escape'],
     // require identifiers to match the provided regular expression
@@ -104,7 +105,7 @@ module.exports = {
     'space-before-blocks': 2,
     // require or disallow space before function opening parenthesis
     // https://github.com/eslint/eslint/blob/master/docs/rules/space-before-function-paren.md
-    'space-before-function-paren': [0, { 'anonymous': 'never', 'named': 'never' }],
+    'space-before-function-paren': [0, { 'anonymous': 'always', 'named': 'never' }],
     // require or disallow spaces inside parentheses
     'space-in-parens': [2, 'never'],
     // require spaces around operators
