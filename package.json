@@ -1,6 +1,6 @@
 {
   "name": "hubspot-style",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "HubSpot's version of a mostly reasonable approach to JavaScript",
   "scripts": {
     "difftool": "./bin/difftool",

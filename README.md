@@ -799,6 +799,11 @@ Other Style Guides (from Airbnb)
       const nextNumber = number + 1;
       return `A string containing the ${nextNumber}.`;
     });
+
+    // okay
+    [1, 2, 3].map(number => {
+      return `A string containing the ${number}.`;
+    });
     ```
 
   - [8.3](#8.3) <a name='8.3'></a> In case the expression spans over multiple lines, wrap it in parentheses for better readability.
