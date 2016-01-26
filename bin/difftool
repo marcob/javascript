@@ -30,32 +30,41 @@ function rename() {
     mv "$2" "$1"
 }
 
-# Add Airbnb git remote
-if [[ -z $(git remote -v | grep -e "$AIRBNB_REMOTE\s\+$AIRBNB_GIT\s\+(fetch)") ]]; then
-    git remote add "$AIRBNB_REMOTE" "$AIRBNB_GIT"
+function difftool() {
+    git difftool --prompt "$COMPARATE_BRANCH"
+}
+
+if [[ "$1" != "--continue" ]]; then
+    # Add Airbnb git remote
+    if [[ -z $(git remote -v | grep -e "$AIRBNB_REMOTE\s\+$AIRBNB_GIT\s\+(fetch)") ]]; then
+        git remote add "$AIRBNB_REMOTE" "$AIRBNB_GIT"
+    fi
+
+    # Stash any existing changes before diffing
+    git stash save "$STASH_MESSAGE"
+
+    # Checkout working branch
+    checkout "$WORKING_BRANCH"
+
+    # Fetch Airbnb changes
+    git fetch "$AIRBNB_REMOTE" "$REMOTE_BRANCH"
+
+    # Checkout Airbnb remote branch
+    checkout "$COMPARATE_BRANCH" "$AIRBNB_REMOTE/$REMOTE_BRANCH"
+
+    # Rename eslint-config-airbnb to eslint-config-hubspot for diffing
+    rename "$ESLINT_HUBSPOT" "$ESLINT_AIRBNB"
+
+    # Commit rename for diffing
+    git add "$ESLINT_AIRBNB" "$ESLINT_HUBSPOT"
+    git commit -m "$COMMIT_MESSAGE"
+
+    # Checkout last branch to begin diffing
+    git checkout "$WORKING_BRANCH"
+
+    # Begin diffing
+    difftool
+else
+    # Continue difftool
+    difftool
 fi
-
-# Stash any existing changes before diffing
-git stash save "$STASH_MESSAGE"
-
-# Checkout working branch
-checkout "$WORKING_BRANCH"
-
-# Fetch Airbnb changes
-git fetch "$AIRBNB_REMOTE" "$REMOTE_BRANCH"
-
-# Checkout Airbnb remote branch
-checkout "$COMPARATE_BRANCH" "$AIRBNB_REMOTE/$REMOTE_BRANCH"
-
-# Rename eslint-config-airbnb to eslint-config-hubspot for diffing
-rename "$ESLINT_HUBSPOT" "$ESLINT_AIRBNB"
-
-# Commit rename for diffing
-git add "$ESLINT_AIRBNB" "$ESLINT_HUBSPOT"
-git commit -m "$COMMIT_MESSAGE"
-
-# Checkout last branch to begin diffing
-git checkout "$WORKING_BRANCH"
-
-# Begin diffing
-git difftool --prompt "$COMPARATE_BRANCH"
