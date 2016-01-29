@@ -1,6 +1,6 @@
 4.0.1 / 2016-01-24
 ==================
-- [hubspot] Ignore `arrow-body-style`
+ - [hubspot] Ignore `arrow-body-style`
 
 4.0.0 / 2016-01-22
 ==================

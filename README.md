@@ -1237,7 +1237,7 @@ Other Style Guides (from Airbnb)
     ```javascript
     if ([0] && []) {
       // true
-      // An array (even an empty one) is an object, objects will evaluate to true
+      // an array (even an empty one) is an object, objects will evaluate to true
     }
     ```
 
@@ -1288,10 +1288,10 @@ Other Style Guides (from Airbnb)
     }
 
     // bad
-    function () { return false; }
+    function foo() { return false; }
 
     // good
-    function () {
+    function bar() {
       return false;
     }
     ```
@@ -1431,17 +1431,17 @@ Other Style Guides (from Airbnb)
 
     ```javascript
     // bad
-    function () {
+    function foo() {
     ∙∙∙∙const name;
     }
 
     // bad
-    function () {
+    function bar() {
     ∙const name;
     }
 
     // good
-    function () {
+    function baz() {
     ∙∙const name;
     }
     ```
@@ -1849,7 +1849,7 @@ Other Style Guides (from Airbnb)
   - [21.2](#21.2) <a name='21.2'></a> Strings:
 
     ```javascript
-    //  => this.reviewScore = 9;
+    // => this.reviewScore = 9;
 
     // bad
     const totalScore = this.reviewScore + '';
@@ -2120,7 +2120,7 @@ Other Style Guides (from Airbnb)
 
     ...
 
-    $(this).on('listingUpdated', function (e, listingId) {
+    $(this).on('listingUpdated', (e, listingId) => {
       // do something with listingId
     });
     ```
@@ -2133,7 +2133,7 @@ Other Style Guides (from Airbnb)
 
     ...
 
-    $(this).on('listingUpdated', function (e, data) {
+    $(this).on('listingUpdated', (e, data) => {
       // do something with data.listingId
     });
     ```
@@ -2214,7 +2214,7 @@ Other Style Guides (from Airbnb)
 
 ## ECMAScript 6 Styles
 
-  - [27.1](#27.1) <a name='27.1'></a> This is a collection of links to the various es6 features.
+  - [27.1](#27.1) <a name='27.1'></a> This is a collection of links to the various ES6 features.
 
 1. [Arrow Functions](#arrow-functions)
 1. [Classes](#constructors)
@@ -2237,7 +2237,7 @@ Other Style Guides (from Airbnb)
   - [28.1](#28.1) <a name="28.1"></a> **Yup.**
 
     ```javascript
-    function () {
+    function foo() {
       return true;
     }
     ```

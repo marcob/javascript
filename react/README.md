@@ -52,7 +52,7 @@
     }
     ```
 
-    And if you don't have state or refs, prefer functions over classes:
+    And if you don't have state or refs, prefer normal functions (not arrow functions) over classes:
 
     ```javascript
 
@@ -62,6 +62,11 @@
         return <div>{this.props.hello}</div>;
       }
     }
+
+    // bad (since arrow functions do not have a "name" property)
+    const Listing = ({ hello }) => (
+      <div>{hello}</div>
+    );
 
     // good
     function Listing({ hello }) {
@@ -149,7 +154,7 @@
       superLongParam="bar"
       anotherSuperLongParam="baz"
     >
-      <Spazz />
+      <Quux />
     </Foo>
     ```
 
