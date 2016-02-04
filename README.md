@@ -704,7 +704,7 @@ Other Style Guides (from Airbnb)
 
     > Why? It creates a version of the function that executes in the context of `this`, which is usually what you want, and is a more concise syntax.
 
-    > Why not? If you have a fairly complicated function, you might move that logic out into its own function declaration..
+    > Why not? If you have a fairly complicated function, you might move that logic out into its own function declaration.
 
     ```javascript
     // bad
@@ -737,7 +737,7 @@ Other Style Guides (from Airbnb)
     });
 
     // good
-    [1, 2, 3].map(number => {
+    [1, 2, 3].map((number) => {
       const nextNumber = number + 1;
       return `A string containing the ${nextNumber}.`;
     });
@@ -1266,6 +1266,89 @@ Other Style Guides (from Airbnb)
     ```
 
   - [15.4](#15.4) <a name='15.4'></a> For more information see [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll.
+  - [15.5](#15.5) <a name='15.5'></a> Use braces to create blocks in `case` and `default` clauses that contain lexical declarations (e.g. `let`, `const`, `function`, and `class`).
+
+  > Why? Lexical declarations are visible in the entire `switch` block but only get initialized when assigned, which only happens when its `case` is reached. This causes problems when multiple `case` clauses attempt to define the same thing.
+
+  eslint rules: [`no-case-declarations`](http://eslint.org/docs/rules/no-case-declarations.html).
+
+    ```javascript
+    // bad
+    switch (foo) {
+      case 1:
+        let x = 1;
+        break;
+      case 2:
+        const y = 2;
+        break;
+      case 3:
+        function f() {}
+        break;
+      default:
+        class C {}
+    }
+
+    // good
+    switch (foo) {
+      case 1: {
+        let x = 1;
+        break;
+      }
+      case 2: {
+        const y = 2;
+        break;
+      }
+      case 3: {
+        function f() {}
+        break;
+      }
+      case 4:
+        bar();
+        break;
+      default: {
+        class C {}
+      }
+    }
+    ```
+
+  - [15.5](#15.5) <a name='15.5'></a> Ternaries should not be nested and generally be single line expressions.
+
+    eslint rules: [`no-nested-ternary`](http://eslint.org/docs/rules/no-nested-ternary.html).
+
+    ```javascript
+    // bad
+    const foo = maybe1 > maybe2
+      ? "bar"
+      : value1 > value2 ? "baz" : null;
+
+    // better
+    const maybeNull = value1 > value2 ? 'baz' : null;
+
+    const foo = maybe1 > maybe2
+      ? 'bar'
+      : maybeNull;
+
+    // best
+    const maybeNull = value1 > value2 ? 'baz' : null;
+
+    const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
+    ```
+
+  - [15.6](#15.6) <a name='15.6'></a> Avoid unneeded ternary statements.
+
+    eslint rules: [`no-unneeded-ternary`](http://eslint.org/docs/rules/no-unneeded-ternary.html).
+
+    ```javascript
+    // bad
+    const foo = a ? a : b;
+    const bar = c ? true : false;
+    const baz = c ? false : true;
+
+    // good
+    const foo = a || b;
+    const bar = !!c;
+    const baz = !c;
+    ```
 
 **[⬆ back to top](#table-of-contents)**
 
