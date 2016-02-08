@@ -31,13 +31,15 @@
     "url": "https://github.com/HubSpot/javascript/issues"
   },
   "homepage": "https://github.com/HubSpot/javascript",
-  "devDependencies": {
-    "babel-plugin-transform-export-extensions": "^6.4.0",
-    "babel-plugin-transform-strict-mode": "^6.3.13",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-tape-runner": "2.0.0",
+  "dependencies": {
     "eslint": "^1.10.3",
-    "eslint-plugin-react": "^3.16.1",
+    "eslint-plugin-react": "^3.16.1"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-export-extensions": "^6.5.0",
+    "babel-plugin-transform-strict-mode": "^6.5.0",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-tape-runner": "2.0.0",
     "faucet": "0.0.1",
     "parallelshell": "^2.0.0",
     "react": "^0.14.7",
