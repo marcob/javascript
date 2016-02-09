@@ -1,11 +1,12 @@
 import test from 'tape';
 import { CLIEngine } from 'eslint';
-import eslintrc from '../';
 import reactRules from '../rules/react';
 
 const cli = new CLIEngine({
   useEslintrc: false,
-  baseConfig: eslintrc,
+  baseConfig: {
+    extends: 'hubspot'
+  },
 
   // This rule fails when executing on text.
   rules: {indent: 0},
