@@ -6,19 +6,21 @@ const files = {
   base: require('../base')
 };
 
-fs.readdirSync(path.join(__dirname, '../rules')).forEach(name => {
-  if (name === 'react.js') {
-    return;
-  }
+fs.readdirSync(path.join(__dirname, '../rules'))
+  .filter(name => !/eslintrc/.test(name))
+  .forEach(name => {
+    if (/^(react|experimental).js$/.test(name)) {
+      return;
+    }
 
-  files[name] = require(`../rules/${name}`);
-});
+    files[name] = require(`../rules/${name}`);
+  });
 
 Object.keys(files).forEach(name => {
   const config = files[name];
 
   test(`${name}: does not reference react`, t => {
-    t.plan(2);
+    t.plan(3);
 
     t.notOk(config.plugins, 'plugins is unspecified');
 
@@ -26,5 +28,10 @@ Object.keys(files).forEach(name => {
     const reactRuleIds = Object.keys(config.rules)
       .filter(ruleId => ruleId.indexOf('react/') === 0);
     t.deepEquals(reactRuleIds, [], 'there are no react/ rules');
+
+    // scan rules for babel/ and fail if any exist
+    const babelRuleIds = Object.keys(config.rules)
+      .filter(ruleId => ruleId.indexOf('babel/') === 0);
+    t.deepEquals(babelRuleIds, [], 'there are no babel/ rules');
   });
 });

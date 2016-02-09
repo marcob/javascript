@@ -13,8 +13,9 @@ We export three ESLint configurations for your usage.
 
 ### eslint-config-hubspot
 
-Our default export contains all of our ESLint rules, including EcmaScript 6+
-and React. It requires `eslint` and `eslint-plugin-react`.
+Our default export contains all of our ESLint rules, including EcmaScript 6+ and
+React, but excludes experimental features. It requires `eslint` and
+`eslint-plugin-react`.
 
 1. `npm install --save-dev eslint-config-hubspot eslint-plugin-react eslint`
 2. add `"extends": "hubspot"` to your .eslintrc
@@ -25,6 +26,14 @@ Lints ES6+ but does not lint React. Requires `eslint`.
 
 1. `npm install --save-dev eslint-config-hubspot eslint`
 2. add `"extends": "hubspot/base"` to your .eslintrc
+
+### eslint-config-hubspot/experimental
+
+Lints EcmaScript 6+, React, and experimental features. It requires `eslint`,
+`eslint-plugin-react`, `eslint-plugin-babel`, and `babel-eslint`.
+
+1. `npm install --save-dev eslint-config-hubspot eslint-plugin-react eslint-plugin-babel babel-eslint eslint`
+2. add `"extends": "hubspot/experimental"` to your .eslintrc
 
 ### eslint-config-hubspot/legacy
 
