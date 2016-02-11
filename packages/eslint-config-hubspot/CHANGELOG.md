@@ -1,3 +1,11 @@
+5.2.0 / 2016-02-11
+==================
+- [hubspot] Remove error for 'no-param-reassign' for Immutable and GeneralStore
+
+5.1.0 / 2016-02-09
+==================
+- [hubspot] Add `hubspot/experimental` config for ES7 features
+
 5.0.0 / 2016-02-03
 ==================
  - [breaking] disallow unneeded ternary expressions
