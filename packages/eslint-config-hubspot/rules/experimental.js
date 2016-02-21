@@ -3,8 +3,17 @@ module.exports = {
   'plugins': [
     'babel'
   ],
-  'ecmaFeatures': {
-    'experimentalObjectRestSpread': true,
+  'env': {
+    'es6': true
+  },
+  'parserOptions': {
+    'ecmaVersion': 6,
+    'sourceType': 'module',
+    'ecmaFeatures': {
+      'generators': true,
+      'objectLiteralDuplicateProperties': false,
+      'experimentalObjectRestSpread': true
+    }
   },
   'rules': {
     // handles async/await functions correctly
