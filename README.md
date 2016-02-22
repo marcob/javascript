@@ -302,7 +302,7 @@ Other Style Guides (from Airbnb)
   };
   ```
 
-  - [3.9](#3.9) <a name="3.9"></a> Don't wrap object literals in extra parentheses
+  - [3.9](#3.9) <a name="3.9"></a> Don't wrap object literals in extra parentheses except for arrow function returns
 
   ```javascript
   // bad
@@ -312,10 +312,16 @@ Other Style Guides (from Airbnb)
   });
 
   // good
-  const bad = {
+  const good = {
     hello: 'world',
     foo: 'bar'
   };
+
+  // okay
+  const okay = () => ({
+    hello: 'world',
+    foo: 'bar'
+  });
   ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -365,6 +371,54 @@ Other Style Guides (from Airbnb)
     ```javascript
     const foo = document.querySelectorAll('.foo');
     const nodes = Array.from(foo);
+    ```
+
+  - [4.5](#4.5) <a name='4.5'></a> Use return statements in array method callbacks. It's ok to omit the return if the function body consists of a single statement following [8.2](#8.2). eslint: [`array-callback-return`](http://eslint.org/docs/rules/array-callback-return)
+
+    ```javascript
+    // good
+    [1, 2, 3].map((x) => {
+      const y = x + 1;
+      return x * y;
+    });
+
+    // good
+    [1, 2, 3].map(x => x + 1);
+
+    // bad
+    const flat = {};
+    [[0, 1], [2, 3], [4, 5]].reduce((memo, item, index) => {
+      const flatten = memo.concat(item);
+      flat[index] = memo.concat(item);
+    });
+
+    // good
+    const flat = {};
+    [[0, 1], [2, 3], [4, 5]].reduce((memo, item, index) => {
+      const flatten = memo.concat(item);
+      flat[index] = flatten;
+      return flatten;
+    });
+
+    // bad
+    inbox.filter((msg) => {
+      const { subject, author } = msg;
+      if (subject === 'Mockingbird') {
+        return author === 'Harper Lee';
+      } else {
+        return false;
+      }
+    });
+
+    // good
+    inbox.filter((msg) => {
+      const { subject, author } = msg;
+      if (subject === 'Mockingbird') {
+        return author === 'Harper Lee';
+      }
+
+      return false;
+    });
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -468,7 +522,7 @@ Other Style Guides (from Airbnb)
     ```
 
   <a name="es6-template-literals"></a>
-  - [6.4](#6.4) <a name='6.4'></a> When programmatically building up strings, use template strings instead of concatenation. eslint: [`prefer-template`](http://eslint.org/docs/rules/prefer-template.html) jscs: [`requireTemplateStrings`](http://jscs.info/rule/requireTemplateStrings)
+  - [6.4](#6.4) <a name='6.4'></a> When programmatically building up strings, use template strings instead of concatenation. eslint: [`prefer-template`](http://eslint.org/docs/rules/prefer-template.html) [`template-curly-spacing`](http://eslint.org/docs/rules/template-curly-spacing) jscs: [`requireTemplateStrings`](http://jscs.info/rule/requireTemplateStrings)
 
     > Why? Template strings give you a readable, concise syntax with proper newlines and string interpolation features.
 
@@ -481,6 +535,11 @@ Other Style Guides (from Airbnb)
     // bad
     function sayHi(name) {
       return ['How are you, ', name, '?'].join();
+    }
+
+    // bad
+    function sayHi(name) {
+      return `How are you, ${ name }?`;
     }
 
     // good
@@ -556,7 +615,7 @@ Other Style Guides (from Airbnb)
     ```
 
   <a name="es6-rest"></a>
-  - [7.6](#7.6) <a name='7.6'></a> Never use `arguments`, opt to use rest syntax `...` instead.
+  - [7.6](#7.6) <a name='7.6'></a> Never use `arguments`, opt to use rest syntax `...` instead. [`prefer-rest-params`](http://eslint.org/docs/rules/prefer-rest-params)
 
     > Why? `...` is explicit about which arguments you want pulled. Plus rest arguments are a real Array and not Array-like like `arguments`.
 
@@ -792,6 +851,19 @@ Other Style Guides (from Airbnb)
     });
     ```
 
+  - [8.5](#8.5) <a name='8.5'></a> Avoid confusing arrow function syntax (`=>`) with comparison operators (`<=`, `>=`). eslint: [`no-confusing-arrow`](http://eslint.org/docs/rules/no-confusing-arrow)
+
+    ```js
+    // bad
+    const itemHeight = item => item.height > 256 ? item.largeSize : item.smallSize;
+
+    // bad
+    const itemHeight = (item) => item.height > 256 ? item.largeSize : item.smallSize;
+
+    // good
+    const itemHeight = item => { return item.height > 256 ? item.largeSize : item.smallSize; }
+    ```
+
 **[⬆ back to top](#table-of-contents)**
 
 
@@ -900,6 +972,34 @@ Other Style Guides (from Airbnb)
 
       toString() {
         return `Jedi - ${this.getName()}`;
+      }
+    }
+    ```
+
+  - [9.5](#9.5) <a name='9.5'></a> Classes have a default constructor if one is not specified. An empty constructor function or one that just delegates to a parent class is unnecessary. [`no-useless-constructor`](http://eslint.org/docs/rules/no-useless-constructor)
+
+    ```javascript
+    // bad
+    class Jedi {
+      constructor() {}
+
+      getName() {
+        return this.name;
+      }
+    }
+
+    // bad
+    class Rey extends Jedi {
+      constructor(...args) {
+        super(...args);
+      }
+    }
+
+    // good
+    class Rey extends Jedi {
+      constructor(...args) {
+        super(...args);
+        this.name = 'Rey';
       }
     }
     ```
@@ -1613,8 +1713,8 @@ Other Style Guides (from Airbnb)
     })(this);↵
     ```
 
-  - [18.6](#18.6) <a name='18.6'></a> Use indentation when making long method chains. Use a leading dot, which
-    emphasizes that the line is a method call, not a new statement.
+  - [18.6](#18.6) <a name='18.6'></a> Use indentation when making long method chains (more than 2 method chains). Use a leading dot, which
+    emphasizes that the line is a method call, not a new statement. eslint: [`newline-per-chained-call`](http://eslint.org/docs/rules/newline-per-chained-call) [`no-whitespace-before-property`](http://eslint.org/docs/rules/no-whitespace-before-property)
 
     ```javascript
     // bad
@@ -1651,6 +1751,9 @@ Other Style Guides (from Airbnb)
       .append('svg:g')
         .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
         .call(tron.led);
+
+    // good
+    const leds = stage.selectAll('.led').data(data);
     ```
 
   - [18.7](#18.7) <a name='18.7'></a> Leave a blank line after blocks and before the next statement. jscs: [`requirePaddingNewLinesAfterBlocks`](http://jscs.info/rule/requirePaddingNewLinesAfterBlocks)
