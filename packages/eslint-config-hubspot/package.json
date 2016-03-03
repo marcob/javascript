@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-hubspot",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "HubSpot's ESLint config, following our styleguide",
   "main": "index.js",
   "scripts": {

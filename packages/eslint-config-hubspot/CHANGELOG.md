@@ -1,3 +1,7 @@
+6.0.1 / 2016-02-22
+==================
+- [fix] disable [`no-confusing-arrow`][no-confusing-arrow] due to an `eslint` bug ([#752](https://github.com/airbnb/javascript/issues/752))
+
 6.0.0 / 2016-02-21
 ==================
 - [breaking] enable `array-callback-return`

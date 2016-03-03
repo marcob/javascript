@@ -786,14 +786,14 @@ Other Style Guides (from Airbnb)
     > Why not? If you plan on returning an object.
 
     ```javascript
-    // good
-    [1, 2, 3].map(number => `A string containing the ${number}.`);
-
     // bad
     [1, 2, 3].map(number => {
       const nextNumber = number + 1;
       `A string containing the ${nextNumber}.`;
     });
+
+    // good
+    [1, 2, 3].map(number => `A string containing the ${number}.`);
 
     // good
     [1, 2, 3].map((number) => {
@@ -1060,7 +1060,7 @@ Other Style Guides (from Airbnb)
 
   - [11.1](#11.1) <a name='11.1'></a> Don't use iterators. Prefer JavaScript's higher-order functions like `map()` and `reduce()` instead of loops like `for-of`. eslint: [`no-iterator`](http://eslint.org/docs/rules/no-iterator.html)
 
-    > Why? This enforces our immutable rule. Dealing with pure functions that return values is easier to reason about than side-effects.
+    > Why? This enforces our immutable rule. Dealing with pure functions that return values is easier to reason about than side effects.
 
     ```javascript
     const numbers = [1, 2, 3, 4, 5];
@@ -1411,7 +1411,7 @@ Other Style Guides (from Airbnb)
     }
     ```
 
-  - [15.5](#15.5) <a name='15.5'></a> Ternaries should not be nested and generally be single line expressions.
+  - [15.6](#15.6) <a name='15.6'></a> Ternaries should not be nested and generally be single line expressions.
 
     eslint rules: [`no-nested-ternary`](http://eslint.org/docs/rules/no-nested-ternary.html).
 
@@ -1434,7 +1434,7 @@ Other Style Guides (from Airbnb)
     const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
     ```
 
-  - [15.6](#15.6) <a name='15.6'></a> Avoid unneeded ternary statements.
+  - [15.7](#15.7) <a name='15.7'></a> Avoid unneeded ternary statements.
 
     eslint rules: [`no-unneeded-ternary`](http://eslint.org/docs/rules/no-unneeded-ternary.html).
 
@@ -1577,7 +1577,7 @@ Other Style Guides (from Airbnb)
     }
     ```
 
-  - [17.3](#17.3) <a name='17.3'></a> Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you're pointing out a problem that needs to be revisited, or if you're suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are `FIXME -- need to figure this out` or `TODO -- need to implement`.
+  - [17.3](#17.3) <a name='17.3'></a> Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you're pointing out a problem that needs to be revisited, or if you're suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are `FIXME: -- need to figure this out` or `TODO: -- need to implement`.
 
   - [17.4](#17.4) <a name='17.4'></a> Use `// FIXME:` to annotate problems.
 
@@ -1737,7 +1737,7 @@ Other Style Guides (from Airbnb)
         .updateCount();
 
     // bad
-    const leds = stage.selectAll('.led').data(data).enter().append('svg:svg').class('led', true)
+    const leds = stage.selectAll('.led').data(data).enter().append('svg:svg').classed('led', true)
         .attr('width', (radius + margin) * 2).append('svg:g')
         .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
         .call(tron.led);
@@ -2244,7 +2244,7 @@ Other Style Guides (from Airbnb)
 ## Accessors
 
   - [23.1](#23.1) <a name='23.1'></a> Accessor functions for properties are not required.
-  - [23.2](#23.2) <a name='23.2'></a> If you do make accessor functions use getVal() and setVal('hello').
+  - [23.2](#23.2) <a name='23.2'></a> Do not use JavaScript getters/setters as they cause unexpected side effects and are harder to test, maintain, and reason about. Instead, if you do make accessor functions, use getVal() and setVal('hello').
 
     ```javascript
     // bad
