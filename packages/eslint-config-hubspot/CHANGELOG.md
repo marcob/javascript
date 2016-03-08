@@ -4,6 +4,7 @@
 - [dev deps] update `react-plugin-eslint`, `eslint`, `tape`
 - [hubspot] enable warning for deprecated - v0.14
 - [hubspot] enable `no-is-mounted` to prepare for deprecation
+- [hubspot] update and lock deps for experimental features
 
 6.0.1 / 2016-02-22
 ==================
