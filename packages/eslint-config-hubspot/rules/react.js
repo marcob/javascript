@@ -40,7 +40,11 @@ module.exports = {
     'react/jsx-max-props-per-line': [0, { 'maximum': 1 }],
     // Prevent usage of .bind() and arrow functions in JSX props
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
-    'react/jsx-no-bind': 2,
+    'react/jsx-no-bind': [2, {
+      'ignoreRefs': false,
+      'allowArrowFunctions': false,
+      'allowBind': false,
+    }],
     // Prevent duplicate props in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md
     'react/jsx-no-duplicate-props': [0, { 'ignoreCase': false }],
@@ -76,7 +80,7 @@ module.exports = {
     'react/no-danger': 0,
     // Prevent usage of deprecated methods
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-deprecated.md
-    'react/no-deprecated': [0, { 'react': '0.14.0' }],
+    'react/no-deprecated': [1, { 'react': '0.14.0' }],
     // Prevent usage of setState in componentDidMount
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-did-mount-set-state.md
     'react/no-did-mount-set-state': [2, 'allow-in-func'],
@@ -88,7 +92,7 @@ module.exports = {
     'react/no-direct-mutation-state': 0,
     // Prevent usage of isMounted
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-is-mounted.md
-    'react/no-is-mounted': 0,
+    'react/no-is-mounted': 2,
     // Prevent multiple component definition per file
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md
     'react/no-multi-comp': [2, { 'ignoreStateless': true }],
@@ -104,6 +108,9 @@ module.exports = {
     // Require ES6 class declarations over React.createClass
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-es6-class.md
     'react/prefer-es6-class': [0, 'always'],
+    // Require stateless functions when not using lifecycle methods, setState or ref
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md
+    'react/prefer-stateless-function': 2,
     // Prevent missing props validation in a React component definition
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md
     'react/prop-types': [2, { 'ignore': [], 'customValidators': [] }],

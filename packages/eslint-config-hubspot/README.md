@@ -29,7 +29,7 @@ Lints ES6+ but does not lint React. Requires `eslint`.
 
 ### eslint-config-hubspot/experimental
 
-Lints EcmaScript 6+, React, and experimental features. It requires `eslint`,
+Lints EcmaScript 6+, React, and ES6/7 experimental features. It requires `eslint`,
 `eslint-plugin-react`, `eslint-plugin-babel`, and `babel-eslint`.
 
 1. `npm install --save-dev eslint-config-hubspot eslint-plugin-react eslint-plugin-babel babel-eslint eslint`

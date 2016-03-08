@@ -1,3 +1,10 @@
+6.1.0 / 2016-02-22
+==================
+- [new] enable [`react/prefer-stateless-function`][react/prefer-stateless-function]
+- [dev deps] update `react-plugin-eslint`, `eslint`, `tape`
+- [hubspot] enable warning for deprecated - v0.14
+- [hubspot] enable `no-is-mounted` to prepare for deprecation
+
 6.0.1 / 2016-02-22
 ==================
 - [fix] disable [`no-confusing-arrow`][no-confusing-arrow] due to an `eslint` bug ([#752](https://github.com/airbnb/javascript/issues/752))
