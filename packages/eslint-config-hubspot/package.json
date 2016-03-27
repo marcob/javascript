@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-hubspot",
-  "version": "6.1.0",
+  "version": "6.2.0",
   "description": "HubSpot's ESLint config, following our styleguide",
   "main": "index.js",
   "scripts": {
@@ -32,21 +32,21 @@
   },
   "homepage": "https://github.com/HubSpot/javascript",
   "devDependencies": {
-    "babel-eslint": "^6.0.0-beta.5",
+    "babel-eslint": "^6.0.0",
     "babel-plugin-transform-export-extensions": "^6.5.0",
     "babel-plugin-transform-strict-mode": "^6.6.5",
     "babel-preset-es2015": "^6.6.0",
     "babel-tape-runner": "^2.0.1",
-    "eslint": "2.2.0",
+    "eslint": "^2.4.0",
     "eslint-plugin-babel": "^3.1.0",
-    "eslint-plugin-react": "^4.2.0",
+    "eslint-plugin-react": "^4.2.3",
     "faucet": "^0.0.1",
     "parallelshell": "^2.0.0",
     "react": "^0.14.7",
     "tape": "^4.5.1"
   },
   "peerDependencies": {
-    "eslint": "^2.2.0",
-    "eslint-plugin-react": "^4.0.0"
+    "eslint": "^2.4.0",
+    "eslint-plugin-react": "^4.2.3"
   }
 }
