@@ -261,35 +261,6 @@
     });
     ```
 
-  - Always provide defaults for non-required `propTypes`
-
-    ```javascript
-    // bad (missing default value for `b` and `z` props)
-    const Component = React.createClass({
-      propTypes: {
-        a: React.PropTypes.any.isRequired,
-        b: React.PropTypes.string,
-        z: React.PropTypes.number
-      }
-    });
-
-    // good
-    const Component = React.createClass({
-      propTypes: {
-        a: React.PropTypes.any.isRequired,
-        b: React.PropTypes.string,
-        z: React.PropTypes.number
-      },
-
-      getDefaultProps() {
-        return {
-          b: 'something',
-          z: 0
-        }
-      }
-    });
-    ```
-
 ## Parentheses
 
   - Wrap JSX tags in parentheses when they span more than one line. eslint: [`react/wrap-multilines`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/wrap-multilines.md)
