@@ -46,10 +46,12 @@ module.exports = {
     // disallow mixed 'LF' and 'CRLF' as linebreaks
     'linebreak-style': 0,
     // specify the maximum length of a line in your program
-    // https://github.com/eslint/eslint/blob/master/docs/rules/max-len.md
-    'max-len': [0, 100, 2, {
-      'ignoreUrls': true,
-      'ignoreComments': false
+    // http://eslint.org/docs/rules/max-len
+    'max-len': ['error', 100, 2, {
+      ignoreUrls: true,
+      ignoreComments: false,
+      ignoreStrings: true,
+      ignoreTemplateLiterals: true,
     }],
     // specify the maximum depth callbacks can be nested
     'max-nested-callbacks': 0,
