@@ -1,3 +1,5 @@
+### Project moved to [HubSpot/eslint-config](https://github.com/HubSpot/eslint-config)
+
 # HubSpot JavaScript Style Guide() {
 
 [![npm version](https://badge.fury.io/js/hubspot-style.svg)](https://badge.fury.io/js/hubspot-style)
